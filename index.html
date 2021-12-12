@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML 5 Boilerplate</title>
+  <link rel="stylesheet" href="style.css">
 
-<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   
   <!-- Material Design Theming -->
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
     /**
      * Function called when clicking the Login/Logout button.
      */
-    function toggleSignIn() {
+     function toggleSignIn() {
       if (!firebase.auth().currentUser) {
         var provider = new firebase.auth.GoogleAuthProvider();
         provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
@@ -59,63 +59,58 @@
      *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
      *    out, and that is where we update the UI.
      */
-    function initApp() {
+     function initApp() {
       // Listening for auth state changes.
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
           var displayName = user.displayName;
           var email = user.email;
-          var emailVerified = user.emailVerified;
-          var photoURL = user.photoURL;
-          var isAnonymous = user.isAnonymous;
-          var uid = user.uid;
           var providerData = user.providerData;
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
           document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-          document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+          document.getElementById('quickstart-account-details').textContent = displayName
         } else {
           // User is signed out.
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
           document.getElementById('quickstart-sign-in').textContent = 'Sign in with Google';
           document.getElementById('quickstart-account-details').textContent = 'null';
-          document.getElementById('quickstart-oauthtoken').textContent = 'null';
         }
         document.getElementById('quickstart-sign-in').disabled = false;
       });
 
       document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
     }
-
     window.onload = function() {
       initApp();
     };
   </script>
 
-  
 
-  </head>
-  <body>
 
+</head>
+
+<body>
+<div id="entries">
+
+      <h1>TODO LIST</h1>
+    <ul id="task-list">
+
+    </ul>
+    <form id="task-form">
+      <input type="text" id="task-input">
+      <button type="submit" id="task-add"><i class="fas fa-plus"></i></button>
+    </form>
+</div>
 
  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
-  <!-- Header section containing title -->
-  <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-      <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop">
-        <a href="/"><h3>Firebase Authentication</h3></a>
-      </div>
-    </div>
-  </header>
-
   <main class="mdl-layout__content mdl-color--grey-100">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
 
       <!-- Container for the demo -->
       <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
         <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
-          <h2 class="mdl-card__title-text">Google Authentication with Popup</h2>
+          <h2 class="mdl-card__title-text">Authentication for Trade Journal</h2>
         </div>
         <div class="mdl-card__supporting-text mdl-color-text--grey-600">
           <p>Sign in with your Google account below.</p>
@@ -125,19 +120,23 @@
 
           <!-- Container where we'll display the user details -->
           <div class="quickstart-user-details-container">
-            Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+            sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
             <div>Firebase auth <code>currentUser</code> object value:</div>
-            <pre><code id="quickstart-account-details">null</code></pre>
-            <div>Google OAuth Access Token:</div>
-            <pre><code id="quickstart-oauthtoken">null</code></pre>
+            <pre><code id="quickstart-account-details"> _  </code></pre>
+
           </div>
         </div>
       </div>
     </div>
+
+
+
+
+
   </main>
 </div>
 
- 
+
 
 
 
@@ -160,7 +159,7 @@
   };
 
   // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
 //const app = initializeApp(firebaseConfig);
 
 const form = document.getElementById('task-form');
@@ -172,50 +171,41 @@ const tasks = database.ref('tasks');
 console.log('ok')
 
 form.onsubmit = (e) => {
-    e.preventDefault();
-    tasks.push().set({
-        'task' : taskInput.value
-    })
-    taskInput.value = ''
+  e.preventDefault();
+  tasks.push().set({
+    'task' : taskInput.value
+  })
+  taskInput.value = ''
 }
 
 tasks.once('value',(snapshot) => {
-    taskList.innerHTML = '';
-    var data = snapshot.val()
-    for(var taskID in data){
+  taskList.innerHTML = '';
+  var data = snapshot.val()
+  for(var taskID in data){
         //console.log('task is '+ data[taskID].task)
         taskList.innerHTML += `
         <li>
-            <div class="task-card">
-                <button class="update">
-                    <span class="fas fa-edit"></span>
-                </button>
+        <div class="task-card">
+        <button class="update">
+        <span class="fas fa-edit"></span>
+        </button>
 
-                <p>${data[taskID].task}</p>
+        <p>${data[taskID].task}</p>
 
-                <button class="delete">
-                    <span class="fas fa-trash"></span>
-                </button>
-            </div>
+        <button class="delete">
+        <span class="fas fa-trash"></span>
+        </button>
+        </div>
         </li>
-    `
-    }
-})
+        `
+      }
+    })
 
 const auth = firebase.auth();
 var provider = new firebase.auth.GoogleAuthProvider();
 </script>
 
- <main>
-        <h1>TODO LIST</h1>
-        <ul id="task-list">
-            
-        </ul>
-        <form id="task-form">
-            <input type="text" id="task-input">
-            <button type="submit" id="task-add"><i class="fas fa-plus"></i></button>
-        </form>
-    </main>
 
-  </body>
+
+</body>
 </html>

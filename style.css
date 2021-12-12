@@ -1,11 +1,10 @@
 body{
     margin:0;
-    background:#93BEDF;
+    background:#e8a87c;
     user-select:none;
 }
 
-
-h1{
+h2{
     position:fixed;
     top:0;
     margin:0;
@@ -18,6 +17,7 @@ h1{
     box-shadow: 0 0 20px -3px;
     letter-spacing: 10px;
 }
+
 ul{
     width:90vw;
     max-width: 500px;
@@ -28,7 +28,7 @@ ul{
 }
 li{
     list-style: none;
-    background:#9BFDB8 ;
+    background:#fbeec1 ;
     font-size:3ch;
     border-radius:10px;
     box-shadow: 0 0 5px -3px;
@@ -44,7 +44,7 @@ li{
     border-radius:10px 0 0 10px;
     outline: none;
     border:none;
-    background:#3E92CC;
+    background:yellow;
     font-size:3ch;
     color:white;
 }
@@ -57,17 +57,6 @@ li{
     text-align:center;
 }
 
-.delete{
-    border-radius:0 10px 10px 0;
-    outline: none;
-    border:none;
-    background:#F05365;
-    font-size:3.5ch;
-    color:white;
-}
-.delete:hover{
-    background:#f11932;
-}
 
 #task-form{
     padding:0;

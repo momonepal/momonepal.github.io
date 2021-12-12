@@ -70,6 +70,7 @@
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
           document.getElementById('quickstart-sign-in').textContent = 'Sign out';
           document.getElementById('quickstart-account-details').textContent = displayName
+          document.getElementById("entries").hidden = false;
         } else {
           // User is signed out.
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
@@ -91,7 +92,7 @@
 </head>
 
 <body>
-<div id="entries">
+<div id="entries" hidden>
 
       <h1>TODO LIST</h1>
     <ul id="task-list">
@@ -120,24 +121,15 @@
 
           <!-- Container where we'll display the user details -->
           <div class="quickstart-user-details-container">
-            sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
-            <div>Firebase auth <code>currentUser</code> object value:</div>
-            <pre><code id="quickstart-account-details"> _  </code></pre>
-
+            Sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+            <div>User Name: <code id="quickstart-account-details"> _  </code></div>
           </div>
         </div>
       </div>
     </div>
 
-
-
-
-
   </main>
 </div>
-
-
-
 
 
 <script type="module">
@@ -204,8 +196,6 @@ tasks.once('value',(snapshot) => {
 const auth = firebase.auth();
 var provider = new firebase.auth.GoogleAuthProvider();
 </script>
-
-
 
 </body>
 </html>
